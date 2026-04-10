@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", serif;
+  
+  --color-brand-brown: #2D1B18;
+  --color-brand-beige: #FDFBF7;
+  --color-brand-teal: #004D40;
+  --color-brand-gold: #C5A059;
+  --color-brand-gold-light: #E8D5B5;
+  --color-brand-ivory: #F9F6F0;
+  --color-brand-red: #5D1010;
+  --color-brand-green: #2E7D32;
+}
+
+@layer base {
+  body {
+    @apply bg-brand-beige text-brand-brown font-sans min-h-screen relative overflow-x-hidden selection:bg-brand-gold/30;
+  }
+
+  /* Luxury Animated Background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 0% 0%, rgba(197, 160, 89, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 100% 100%, rgba(45, 27, 24, 0.03) 0%, transparent 50%),
+      radial-gradient(circle at 50% 50%, rgba(249, 246, 240, 1) 0%, transparent 100%);
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.2) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  .bg-luxury-mesh {
+    background-color: var(--color-brand-beige);
+    background-image: 
+      radial-gradient(at 0% 0%, hsla(45, 45%, 95%, 1) 0, transparent 50%), 
+      radial-gradient(at 50% 0%, hsla(30, 30%, 95%, 1) 0, transparent 50%), 
+      radial-gradient(at 100% 0%, hsla(45, 45%, 92%, 1) 0, transparent 50%);
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-brand-beige;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-brand-brown/10 rounded-full hover:bg-brand-gold/40 transition-colors;
+  }
+}
+
+.glass {
+  @apply bg-white/30 backdrop-blur-3xl border border-white/40 shadow-[0_8px_32px_0_rgba(45,27,24,0.05)];
+}
+
+.glass-dark {
+  @apply bg-brand-brown/80 backdrop-blur-3xl border border-white/10 shadow-2xl;
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #C5A059 0%, #F9F6F0 50%, #C5A059 100%);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.premium-border {
+  @apply border border-brand-gold/20 relative overflow-hidden;
+}
+
+.premium-border::after {
+  content: '';
+  @apply absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700;
+  background: linear-gradient(90deg, transparent, rgba(197, 160, 89, 0.1), transparent);
+  transform: translateX(-100%);
+  animation: borderShimmer 3s infinite;
+}
+
+@keyframes borderShimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+

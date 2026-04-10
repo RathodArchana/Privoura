@@ -1,0 +1,7 @@
+{
+  "name": "Privoura",
+  "description": "Privoura — Private Luxury Commerce. A premium, privacy-preserving shopping experience powered by local AI.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
